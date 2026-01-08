@@ -7,6 +7,97 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- link external CSS -->
     <link rel="stylesheet" href="defence.css">
+    <style>
+        body {
+            padding-bottom: 80px;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .dashboard-button {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 3px solid transparent;
+        }
+
+        .dashboard-button:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(37, 99, 235, 0.4);
+            border-color: #ff8c42;
+        }
+
+        .dashboard-button h2 {
+            font-size: 1.8rem;
+            margin: 0;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .dashboard-button p {
+            margin-top: 15px;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .dashboard-button.mineral {
+            background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-container {
+                margin: 40px auto;
+                gap: 20px;
+            }
+
+            .dashboard-button {
+                min-width: 250px;
+                padding: 40px 30px;
+            }
+
+            .dashboard-button h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #000000;
+            color: #e2e8f0;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 
@@ -20,746 +111,24 @@
     </div>
 </header>
 
-<div class="attribution-header">
-    <h1 class="institution-name">India Defence Exports Analysis</h1>
-    <div class="attribution-content">
-        <p class="subtitle" style="text-align: center;">A Decade of Strategic Growth (2014 - 2025)</p>
-    </div>
-</div>
-
-<div class="dashboard-grid">
+<div class="dashboard-container">
+    <a href="defenceexport.html" class="dashboard-button">
+        <h2>Indian Defence Export Dashboard</h2>
+        <p>Explore India's defence export journey from 2014-2025</p>
+    </a>
     
-    <div class="card card-wide">
-        <h3>Total Export Value (₹ Crores)</h3>
-        <div style="height: 600px; position: relative;">
-            <canvas id="exportTrendChart" style="height:100%;"></canvas>
-        </div>
-    </div>
-
-    <div class="card card-wide">
-        <h3>Public vs. Private Sector (FY 2024-25)</h3>
-        <div style="max-height: 350px; max-width: 500px; margin: 0 auto; position: relative;">
-            <canvas id="sectorChart"></canvas>
-        </div>
-    </div>
-
-    <div class="two-column-wrapper">
-        <div class="card">
-            <h3>Top Importing Nations (Market Share)</h3>
-            <div style="height:300px; position:relative;">
-                <canvas id="importerChart" style="height:100%;"></canvas>
-            </div>
-            <p style="font-size: 0.9rem; color: #64748b; margin-top: 8px; font-style: italic;">The Relative Export Volume Index tracks the changes in the physical quantity of exports over time, relative to a chosen "Base Year" (set at 100).</p>
-        </div>
-
-        <div class="card">
-            <h3>Key Technologies & Weapons</h3>
-            <p>India's export portfolio has shifted from sub-systems to full-scale platforms:</p>
-            <div class="tech-list">
-                <div class="tech-item">
-                    <img src="logo/brahmos.jpg" alt="BrahMos" class="tech-logo" onerror="this.style.display='none'">
-                    <span>BrahMos Missiles</span>
-                </div>
-                <div class="tech-item">
-                    <img src="logo/dornier228.jpg" alt="Dornier" class="tech-logo" onerror="this.style.display='none'">
-                    <span>Dornier</span>
-                </div>
-                <div class="tech-item">
-                    <img src="logo/akashairdefence.jpg" alt="Akash Air Defence" class="tech-logo" onerror="this.style.display='none'">
-                    <span>Akash Air Defence</span>
-                </div>
-                <div class="tech-item">
-                    <img src="logo/alhdhruv.jpg" alt="ALH Dhruv" class="tech-logo" onerror="this.style.display='none'">
-                    <span>ALH Dhruv Helicopters</span>
-                </div>
-                <div class="tech-item">
-                    <img src="logo/ATAGSarti;;ery.jpg" alt="ATAGS" class="tech-logo" onerror="this.style.display='none'">
-                    <span>ATAGS Artillery</span>
-                </div>
-                <div class="tech-item">
-                    <img src="logo/patrolvessel.jpg" alt="Patrol Vessels" class="tech-logo" onerror="this.style.display='none'">
-                    <span>Patrol Vessels</span>
-                </div>
-                <div class="tech-item">
-                    <img src="logo/bulletproofgear.jpg" alt="Bulletproof Gear" class="tech-logo" onerror="this.style.display='none'">
-                    <span>Bulletproof Gear</span>
-                </div>
-                <div class="tech-item">
-                    <img src="logo/swatiradar.jpg" alt="Radar Systems" class="tech-logo" onerror="this.style.display='none'">
-                    <span>Radar Systems</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card card-wide">
-        <h3>Export Values & Key Highlights (FY)</h3>
-        <div class="timeline-container-curved">
-            <p>Timeline (2014 → 2025) — export amount (₹ Crore) and brief highlight.</p>
-            <div class="timeline-curved">
-                <div class="timeline-path">
-                    <svg class="timeline-svg" viewBox="0 0 1400 400" preserveAspectRatio="none">
-                        <path d="M 50 200 Q 200 100, 350 150 T 650 120 T 950 140 T 1250 100 L 1350 50" 
-                            stroke="#fbbf24" 
-                            stroke-width="3" 
-                            fill="none" 
-                            stroke-dasharray="8,8" 
-                            opacity="0.4"/>
-                    </svg>
-                </div>
-                
-                <div class="timeline-items-curved">
-                    <div class="timeline-point" style="--pos-x: 50px; --pos-y: 200px;">
-                        <div class="point-dot"></div>
-                        <div class="point-content above">
-                            <div class="point-year">2014</div>
-                            <div class="point-amount">₹686 Cr</div>
-                            <div class="point-desc">Baseline prior to major policy shifts</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-point" style="--pos-x: 200px; --pos-y: 110px;">
-                        <div class="point-dot"></div>
-                        <div class="point-content below">
-                            <div class="point-year">2015</div>
-                            <div class="point-amount">₹1,941 Cr</div>
-                            <div class="point-desc">Initial push for indigenous production</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-point" style="--pos-x: 350px; --pos-y: 150px;">
-                        <div class="point-dot"></div>
-                        <div class="point-content above">
-                            <div class="point-year">2016</div>
-                            <div class="point-amount">₹2,059 Cr</div>
-                            <div class="point-desc">Steady growth in components</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-point" style="--pos-x: 500px; --pos-y: 130px;">
-                        <div class="point-dot"></div>
-                        <div class="point-content below">
-                            <div class="point-year">2017</div>
-                            <div class="point-amount">₹1,521 Cr</div>
-                            <div class="point-desc">Marginal dip due to global fluctuations</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-point" style="--pos-x: 650px; --pos-y: 120px;">
-                        <div class="point-dot"></div>
-                        <div class="point-content above">
-                            <div class="point-year">2018</div>
-                            <div class="point-amount">₹4,682 Cr</div>
-                            <div class="point-desc">Significant jump; streamlined licenses</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-point" style="--pos-x: 800px; --pos-y: 135px;">
-                        <div class="point-dot"></div>
-                        <div class="point-content below">
-                            <div class="point-year">2019</div>
-                            <div class="point-amount">₹10,745 Cr</div>
-                            <div class="point-desc">First time crossing ₹10,000 crore</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-point" style="--pos-x: 950px; --pos-y: 140px;">
-                        <div class="point-dot"></div>
-                        <div class="point-content above">
-                            <div class="point-year">2020</div>
-                            <div class="point-amount">₹9,115 Cr</div>
-                            <div class="point-desc">Impact from COVID-19 onset</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-point" style="--pos-x: 1100px; --pos-y: 125px;">
-                        <div class="point-dot"></div>
-                        <div class="point-content below">
-                            <div class="point-year">2021</div>
-                            <div class="point-amount">₹8,434 Cr</div>
-                            <div class="point-desc">Continued pandemic effects</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-point" style="--pos-x: 1250px; --pos-y: 100px;">
-                        <div class="point-dot"></div>
-                        <div class="point-content above">
-                            <div class="point-year">2022</div>
-                            <div class="point-amount">₹12,815 Cr</div>
-                            <div class="point-desc">BrahMos deals</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-point" style="--pos-x: 1400px; --pos-y: 80px;">
-                        <div class="point-dot"></div>
-                        <div class="point-content below">
-                            <div class="point-year">2023</div>
-                            <div class="point-amount">₹15,920 Cr</div>
-                            <div class="point-desc">85+ export destinations</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-point" style="--pos-x: 1550px; --pos-y: 70px;">
-                        <div class="point-dot"></div>
-                        <div class="point-content above">
-                            <div class="point-year">2024</div>
-                            <div class="point-amount">₹21,083 Cr</div>
-                            <div class="point-desc">Crossed ₹20k crore milestone</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-point" style="--pos-x: 1700px; --pos-y: 50px;">
-                        <div class="point-dot rocket"></div>
-                        <div class="point-content below highlight-final">
-                            <div class="point-year">2025</div>
-                            <div class="point-amount">₹23,622 Cr</div>
-                            <div class="point-desc">Highest-ever recorded value! 🚀</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- NEW: Top DPSUs Section -->
-    <div class="card card-wide">
-        <h3>Top Public Sector Undertakings (DPSUs)</h3>
-        <p class="section-intro">India restructured ordnance factories into 7 new DPSUs (2021) joining existing defense giants.</p>
-        <div class="company-grid">
-            <div class="company-card dpsu">
-                <div class="company-header">
-                    <img src="logo/Hindustan Aeronautics Ltd (HAL).png" alt="HAL Logo" class="company-logo" onerror="this.style.display='none'">
-                    
-                    <strong>Hindustan Aeronautics Ltd (HAL)</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">LCH Prachand, ALH Dhruv, Dornier Aircraft</p>
-                    <p class="destinations">📍 Seychelles, Mauritius</p>
-                </div>
-            </div>
-            <div class="company-card dpsu">
-                <div class="company-header">
-                    <img src="logo/Bharat Electronics Ltd (BEL).jpg" alt="BEL Logo" class="company-logo" onerror="this.style.display='none'">
-                    
-                    <strong>Bharat Electronics Ltd (BEL)</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">Radars (Swathi, Revathi), EW systems, Naval Sonars, Night Vision</p>
-                    <p class="destinations">📍 USA, Vietnam, Armenia, Myanmar</p>
-                </div>
-            </div>
-            <div class="company-card dpsu">
-                <div class="company-header">
-                    <img src="logo/Bharat Dynamics Ltd (BDL).png" alt="BDL Logo" class="company-logo" onerror="this.style.display='none'">
-                    
-                    <strong>Bharat Dynamics Ltd (BDL)</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">Akash Missiles, Astra (Air-to-Air), ATGMs, Torpedoes</p>
-                    <p class="destinations">📍 Armenia, Philippines, Indonesia</p>
-                </div>
-            </div>
-            <div class="company-card dpsu">
-                <div class="company-header">
-                    <img src="logo/Mazagon Dock Shipbuilders (MDL).png" alt="MDL Logo" class="company-logo" onerror="this.style.display='none'">
-                    
-                    <strong>Mazagon Dock Shipbuilders (MDL)</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">Scorpene Submarines, Destroyers, Stealth Frigates</p>
-                    <p class="destinations">📍 Middle East, SE Asia (maintenance/parts)</p>
-                </div>
-            </div>
-            <div class="company-card dpsu">
-                <div class="company-header">
-                    <img src="logo/Munitions India Ltd (MIL).jpg" alt="MIL Logo" class="company-logo" onerror="this.style.display='none'">
-                    
-                    <strong>Munitions India Ltd (MIL)</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">155mm Artillery Shells, Bombs, Small arms ammunition</p>
-                    <p class="destinations">📍 UAE, Armenia, Saudi Arabia, Europe</p>
-                </div>
-            </div>
-            <div class="company-card dpsu">
-                <div class="company-header">
-                    <img src="logo/Armoured Vehicles Nigam (AVNL).png" alt="AVNL Logo" class="company-logo" onerror="this.style.display='none'">
-                    
-                    <strong>Armoured Vehicles Nigam (AVNL)</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">T-90 & T-72 Tanks (Arjun), BMP-2 Sarath (ICVs)</p>
-                    <p class="destinations">📍 SE Asia, African nations (spare parts)</p>
-                </div>
-            </div>
-            <div class="company-card dpsu">
-                <div class="company-header">
-                    <img src="logo/Advanced Weapons & Equipment (AWEIL).png" alt="AWEIL Logo" class="company-logo" onerror="this.style.display='none'">
-                    
-                    <strong>Advanced Weapons & Equipment (AWEIL)</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">Dhanush Artillery, Small arms, Heavy-caliber guns</p>
-                    <p class="destinations">📍 Global markets for artillery components</p>
-                </div>
-            </div>
-            <div class="company-card dpsu">
-                <div class="company-header">
-                    <img src="logo/goa shipyard ltd.png" alt="GSL Logo" class="company-logo" onerror="this.style.display='none'">
-                    
-                    <strong>Goa Shipyard Ltd (GSL)</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">Fast Patrol Vessels, Interceptor Boats, Offshore Patrol Vessels</p>
-                    <p class="destinations">📍 Mauritius, Seychelles, Sri Lanka, Maldives</p>
-                </div>
-            </div>
-            <div class="company-card dpsu">
-                <div class="company-header">
-                    <img src="logo/Cochin_Shipyard.png" alt="CSL Logo" class="company-logo" onerror="this.style.display='none'">
-                    
-                    <strong>Cochin Shipyard Ltd (CSL)</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">Aircraft Carrier (Vikrant), Warships, Corvettes, Coast Guard Vessels</p>
-                    <p class="destinations">📍 SE Asia, Middle East (ship repair & components)</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- NEW: Top Private Companies Section -->
-    <div class="card card-wide">
-        <h3>🏢 Top Private Defence Companies</h3>
-        <p class="section-intro">Private sector accounts for over 60% of India's defence exports.</p>
-        <div class="company-grid">
-            <div class="company-card private">
-                <div class="company-header">
-                    <img src="logo/Tata Advanced Systems (TASL).jpg" alt="TATA Logo" class="company-logo" onerror="this.style.display='none'">
-                    
-                    <strong>Tata Advanced Systems (TASL)</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">C-295 Aircraft (Airbus), UAVs, Radars, Missile Launchers</p>
-                    <p class="destinations">📍 USA (Boeing/Lockheed supplier), UK</p>
-                </div>
-            </div>
-            <div class="company-card private">
-                <div class="company-header">
-                    <img src="logo/L&T Defence.png" alt="L&T Logo" class="company-logo" onerror="this.style.display='none'">
-                    
-                    <strong>L&T Defence</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">K9 Vajra Artillery, Submarines, Missile Launchers</p>
-                    <p class="destinations">📍 SE Asia, Middle East</p>
-                </div>
-            </div>
-            <div class="company-card private">
-                <div class="company-header">
-                    <img src="logo/Bharat Forge (Kalyani Group).jpg" alt="Bharat Forge Logo" class="company-logo" onerror="this.style.display='none'">
-                    
-                    <strong>Bharat Forge (Kalyani Group)</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">ATAGS Artillery, MArG Howitzers, Armoured Vehicles (M4)</p>
-                    <p class="destinations">📍 Armenia, Saudi Arabia, USA</p>
-                </div>
-            </div>
-            <div class="company-card private">
-                <div class="company-header">
-                    <img src="logo/Adani Defence & Aerospace.jpg" alt="Adani Logo" class="company-logo" onerror="this.style.display='none'">
-                    
-                    <strong>Adani Defence & Aerospace</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">Hermes 900 UAVs, Small Arms (Israel JV), Ammunition</p>
-                    <p class="destinations">📍 Israel, SE Asia</p>
-                </div>
-            </div>
-            <div class="company-card private">
-                <div class="company-header">
-                    <img src="logo/Solar Industries.png" alt="Solar Logo" class="company-logo" onerror="this.style.display='none'">
-                    <strong>Solar Industries</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">Pinaka Rocket Warheads, Loitering Munitions, Propellants</p>
-                    <p class="destinations">📍 Armenia, Nigeria, SE Asia</p>
-                </div>
-            </div>
-            <div class="company-card private">
-                <div class="company-header">
-                    <img src="logo/ideaForge.jpeg" alt="ideaForge Logo" class="company-logo" onerror="this.style.display='none'">
-                    <strong>ideaForge</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">Tactical UAVs (Switch, Netra) for high-altitude surveillance</p>
-                    <p class="destinations">📍 USA, African nations, Bhutan</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- NEW: Top Defence Startups Section -->
-    <div class="card card-wide">
-        <h3>Top Indian Defence Startups</h3>
-        <p class="section-intro">India's defence startup ecosystem is rapidly advancing indigenous capabilities in emerging technologies.</p>
-
-        <div class="company-grid">
-            <div class="company-card startup">
-                <div class="company-header">
-                    <img src="logo/newspace.jpg" alt="NewSpace Logo" class="company-logo" onerror="this.style.display='none'">
-                    <strong>NewSpace Research</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">Swarm drone technology, AI-driven unmanned systems and collective robotics</p>
-                </div>
-            </div>
-            <div class="company-card startup">
-                <div class="company-header">
-                    <img src="logo/qunulabs.jpg" alt="QNu Logo" class="company-logo" onerror="this.style.display='none'">
-                    <strong>QNu Labs</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">Quantum Key Distribution (QKD), quantum-safe cryptography for military communications</p>
-                </div>
-            </div>
-            <div class="company-card startup">
-                <div class="company-header">
-                    <img src="logo/lekha.jpg" alt="Lekha Logo" class="company-logo" onerror="this.style.display='none'">
-                    <strong>Lekha Wireless</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">Indigenous 4G/5G tech, software-defined radios (SDRs) for tactical battlefield networks</p>
-                </div>
-            </div>
-            <div class="company-card startup">
-                <div class="company-header">
-                    <img src="logo/tonbo_imaging.jpg" alt="Tonbo Logo" class="company-logo" onerror="this.style.display='none'">
-                    <strong>Tonbo Imaging</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">Thermal imaging, night vision, fire-control systems for naval weapons (exported to 30+ countries)</p>
-                </div>
-            </div>
-            <div class="company-card startup">
-                <div class="company-header">
-                    <img src="logo/bigbangboom.jpg" alt="Big Bang Boom Logo" class="company-logo" onerror="this.style.display='none'">
-                    <strong>Big Bang Boom Solutions</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">AI-powered anti-drone systems (₹200 crore order from Armed Forces in 2024)</p>
-                </div>
-            </div>
-            <div class="company-card startup">
-                <div class="company-header">
-                    <img src="logo/optimizeelectro.jpg" alt="Optimized Logo" class="company-logo" onerror="this.style.display='none'">
-                    <strong>Optimized Electrotech</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">Long-range zero-light imaging, AI-based automated target recognition systems</p>
-                </div>
-            </div>
-            <div class="company-card startup">
-                <div class="company-header">
-                    <img src="logo/sagardefenceengineering.jpg" alt="Sagar Logo" class="company-logo" onerror="this.style.display='none'">
-                    <strong>Sagar Defence Engineering</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">First unmanned marine surface vehicle for Indian Navy for reconnaissance & patrol</p>
-                </div>
-            </div>
-            <div class="company-card startup">
-                <div class="company-header">
-                    <img src="logo/ajnalens.jpg" alt="AjnaLens Logo" class="company-logo" onerror="this.style.display='none'">
-                    <strong>AjnaLens</strong>
-                </div>
-                <div class="company-body">
-                    <p class="products">Mixed Reality (AR/VR) training simulations and tactical head-mounted displays</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- NEW: Government Schemes -->
-    <div class="card">
-        <h3>Government Schemes Driving Innovation</h3>
-        <div class="scheme-list">
-            <div class="scheme-item">
-                <div class="scheme-title">iDEX</div>
-                <p>Innovations for Defence Excellence: Grants up to ₹1.5 Cr (₹10 Cr for iDEX Prime). 600+ startups engaged.</p>
-            </div>
-            <div class="scheme-item">
-                <div class="scheme-title">TDF</div>
-                <p>Technology Development Fund: DRDO-led fund for MSMEs. Up to ₹50 Crore per project.</p>
-            </div>
-            <div class="scheme-item">
-                <div class="scheme-title">ADITI</div>
-                <p>Advanced Defence Innovation and Technology Initiative: ₹750 crore initiative (2023-24 to 2025-26) offering grants up to ₹25 crore for R&D in ~30 deep-tech critical and strategic areas.</p>
-            </div>
-            <div class="scheme-item">
-                <div class="scheme-title">IIH</div>
-                <p>Investor Hub: Platform facilitating venture capital investment into defence startups, with recent pledges growing from ₹200 crore to over ₹500 crore.</p>
-            </div>
-            <div class="scheme-item">
-                <div class="scheme-title">SRIJAN Portal</div>
-                <p>Lists 14,000+ imported items for local production (Indigenization).</p>
-            </div>
-            <div class="scheme-item">
-                <div class="scheme-title">PILs</div>
-                <p>Positive Indigenisation Lists: 5,500+ items banned from import.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- NEW: Strategic Focus Areas -->
-    <div class="card">
-        <h3>Strategic Focus Areas</h3>
-        <div class="focus-grid">
-            <div class="focus-card ai">
-                <h4>Artificial Intelligence</h4>
-                <ul>
-                    <li>AI-driven Analytics for SCM & Logistics</li>
-                    <li>Facial Recognition for border surveillance</li>
-                    <li>Predictive maintenance (T-90, Su-30MKI)</li>
-                </ul>
-            </div>
-            <div class="focus-card artillery">
-                <h4>Artillery & Guns</h4>
-                <ul>
-                    <li>ATAGS: 155mm/52 caliber advanced towed artillery</li>
-                    <li>Dhanush: "Desi Bofors" upgraded 155mm</li>
-                    <li>Pinaka MBRL: Multi-Barrel Rocket Launchers</li>
-                </ul>
-            </div>
-            <div class="focus-card emerging">
-                <h4>Emerging Tech</h4>
-                <ul>
-                    <li>Swarm Drones: AI-coordinated attacks</li>
-                    <li>Directed Energy Weapons: Project "DURGA II"</li>
-                    <li>Loitering Munitions: Nagastra-1 "suicide drones"</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- NEW: Geographic Breakdown -->
-    <div class="card card-wide">
-        <h3>Where Does India Export?</h3>
-        <div class="geo-grid">
-            <div class="geo-region top">
-                <div class="geo-header">Top 3 Buyers (2024-25)</div>
-                <p>USA • France • Armenia</p>
-            </div>
-            <div class="geo-region">
-                <div class="geo-header">Middle East</div>
-                <p>UAE, Saudi Arabia<br><span class="geo-products">Ammunition & Artillery</span></p>
-            </div>
-            <div class="geo-region">
-                <div class="geo-header">SE Asia</div>
-                <p>Philippines, Vietnam, Indonesia<br><span class="geo-products">BrahMos, Radars, Missiles</span></p>
-            </div>
-            <div class="geo-region">
-                <div class="geo-header">Europe</div>
-                <p>Italy, Poland, Czech Republic<br><span class="geo-products">Sub-systems & Components</span></p>
-            </div>
-            <div class="geo-region">
-                <div class="geo-header">Africa</div>
-                <p>Mauritius, Seychelles, Egypt, Nigeria<br><span class="geo-products">Patrol Vessels, Aircraft</span></p>
-            </div>
-        </div>
-    </div>
-
-    <!-- NEW: Historical Top Buyers (2014–2025) -->
-    <div class="card card-wide">
-        <h3>Top Buyers Historically (2014–2025)</h3>
-        <p class="section-intro">The landscape of India's defence buyers evolved through distinct phases:</p>
-        <div class="history-grid" style="display:flex;gap:16px;flex-wrap:wrap;">
-            <div class="history-card" style="flex:1;min-width:260px;background:rgba(0,0,0,0.03);padding:12px;border-radius:8px;">
-                <h4>2014–2018 Supply Chain Phase</h4>
-                <p><strong>Top Buyers:</strong> USA, UK, Israel</p>
-                <p>Context: Early growth driven by integration into global aerospace supply chains; exports mainly spare parts and components for platforms like Lockheed Martin and Boeing.</p>
-            </div>
-
-            <div class="history-card" style="flex:1;min-width:260px;background:rgba(0,0,0,0.03);padding:12px;border-radius:8px;">
-                <h4>2019–2022 Diversification & Breakthroughs</h4>
-                <p><strong>Emerging Buyers:</strong> Philippines, Vietnam, Mauritius</p>
-                <p>Milestone: Landmark $375M BrahMos deal with the Philippines (2022); shift toward larger platforms and lethal weapon exports.</p>
-            </div>
-
-            <div class="history-card" style="flex:1;min-width:260px;background:rgba(0,0,0,0.03);padding:12px;border-radius:8px;">
-                <h4>2023–2025 Strategic Partner Phase</h4>
-                <ul>
-                    <li><strong>Armenia</strong>: Rapid growth in finished-product purchases (missiles, artillery, anti-drone) — ~ $1B in deals.</li>
-                    <li><strong>USA</strong>: Remained largest buyer by total value; &gt; $2.8B imports from India (2019–2024), ~50% of export value in that span.</li>
-                </ul>
-                <p>Context: Mix of high-value aerospace components and finished systems; strategic partnerships deepen export footprint.</p>
-            </div>
-        </div>
-    </div>
-
+    <a href="minerals.html" class="dashboard-button mineral">
+        <h2>Indian Critical Mineral Dashboard</h2>
+        <p>National Critical Mineral Mission (NCMM) 2024-2031</p>
+    </a>
 </div>
 
 <footer>
-    Data Source: Ministry of Defence (MoD) / PIB Reports | Last Updated: FY 2024-25 Records
+    All rights reserved © Prasad Kumbhar
     <br>
     <br>
     <a href="https://www.linkedin.com/in/prasad-kumbhar23/" target="_blank" style="color: #ffffff; text-decoration: none;">Connect with me on LinkedIn</a>
 </footer>
-
-<script>
-    // Enable horizontal scrolling with mouse wheel for timeline
-    const timelineContainer = document.querySelector('.timeline-container-curved');
-    if (timelineContainer) {
-        timelineContainer.addEventListener('wheel', (e) => {
-            if (e.deltaY !== 0) {
-                e.preventDefault();
-                timelineContainer.scrollLeft += e.deltaY;
-            }
-        });
-    }
-
-    // 1. Export Trend Data
-    const trendCtx = document.getElementById('exportTrendChart').getContext('2d');
-    const trendLabels = ['2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2023-24','2024-25','2025-26'];
-    const trendValues = [
-        686,     // 2014
-        1941,    // 2015
-        2059,    // 2016
-        1521,    // 2017
-        4682,    // 2018
-        10745,   // 2019
-        9115,    // 2020
-        8434,    // 2021
-        12815,   // 2022
-        15920,   // 2023
-        21083.35,// 2023-24
-        23622.00,// 2024-25
-        25794.20 // 2025-26
-    ];
-
-    const step = 3000;
-    const maxVal = Math.max(...trendValues);
-    const suggestedMax = Math.ceil(maxVal / step) * step;
-
-    new Chart(trendCtx, {
-        type: 'line',
-        data: {
-            labels: trendLabels,
-            datasets: [{
-                label: 'Export Value (₹ Cr)',
-                data: trendValues,
-                borderColor: '#fbbf24',
-                backgroundColor: 'rgba(251, 191, 36, 0.2)',
-                fill: true,
-                tension: 0.4
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: true, position: 'top' }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    suggestedMax: suggestedMax,
-                    ticks: {
-                        stepSize: step,
-                        callback: function(value) { return '₹' + value; }
-                    }
-                }
-            }
-        },
-        plugins: [{
-            afterDatasetsDraw: function(chart) {
-                var ctx = chart.ctx;
-                chart.data.datasets.forEach(function(dataset, i) {
-                    var meta = chart.getDatasetMeta(i);
-                    if (!meta.hidden) {
-                        meta.data.forEach(function(element, index) {
-                            ctx.fillStyle = '#fbbf24';
-                            ctx.font = 'bold 11px Arial';
-                            var dataString = '₹' + dataset.data[index].toLocaleString();
-                            ctx.textAlign = 'center';
-                            ctx.textBaseline = 'bottom';
-                            var padding = 5;
-                            var position = element.tooltipPosition();
-                            ctx.fillText(dataString, position.x, position.y - padding);
-                        });
-                    }
-                });
-            }
-        }]
-    });
-
-    // 2. Public vs Private Data
-    const sectorCtx = document.getElementById('sectorChart').getContext('2d');
-    new Chart(sectorCtx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Private Sector (64.5%)', 'Public Sector/DPSUs (35.5%)'],
-            datasets: [{
-                data: [15233, 8389],
-                backgroundColor: ['#38bdf8', '#6366f1'],
-                hoverOffset: 4
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            aspectRatio: 1.5,
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'bottom',
-                    labels: {
-                        padding: 15,
-                        font: {
-                            size: 12
-                        }
-                    }
-                }
-            }
-        } // end of sector chart options
-    }); // end sector chart init
-
-    // 3. Importer Data (bar)
-    const importerCtx = document.getElementById('importerChart').getContext('2d');
-    new Chart(importerCtx, {
-        type: 'bar',
-        data: {
-            labels: ['USA', 'France', 'Armenia', 'Italy', 'Others'],
-            datasets: [{
-                label: 'Relative Export Volume Index',
-                data: [85, 70, 65, 40, 50],
-                backgroundColor: '#fbbf24',
-                maxBarThickness: 40
-            }]
-        },
-        options: {
-            indexAxis: 'y',
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false }
-            },
-            layout: { padding: 8 },
-            scales: {
-                x: {
-                    beginAtZero: true,
-                    ticks: { stepSize: 10, callback: (v)=> '₹' + v } // optional formatting
-                },
-                y: {
-                    ticks: { autoSkip: false }
-                }
-            }
-        }
-    });
-
-</script>
+    
 </body>
 </html>
-
-
