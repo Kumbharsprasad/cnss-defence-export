@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Critical Mineral Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="mineral.css">
+</head>
+<body>
+
+<header>
+    <img src="logo/cnss4.webp" alt="CNSS Logo" class="header-logo">
+    <div class="header-text">
+        <h1>Centre for National Security Studies</h1>
+        <p class="program">Def Tech Internship Batch - 02</p>
+        <p class="prepared-by">Prepared by: <strong>Prasad Namdev Kumbhar</strong></p>
+        <p class="prepared-by">Mentor: <strong>Major Arun Sreedharan</strong></p>
+    </div>
+</header>
+
+<div class="attribution-header">
+    <h1 class="institution-name">India Critical Mineral Analysis</h1>
+    <div class="attribution-content">
+        <p class="subtitle" style="text-align: center;">National Critical Mineral Mission</p>
+    </div>
+</div>
+
+<div class="mission-box">
+    <h2>National Critical Mineral Mission (NCMM) Overview</h2>
+    <p>The Government of India launched the National Critical Mineral Mission (NCMM) in 2025 to establish a robust framework for self-reliance in the critical mineral sector. Under this mission, the Geological Survey of India (GSI) has been tasked with conducting 1,200 exploration projects from 2024-25 to 2030-31.</p>
+    <p>Critical minerals are essential for clean energy technologies like solar panels, wind turbines, EVs, and energy storage systems. To secure these resources, India launched the NCMM to ensure their long-term availability and processing.</p>
+    <div class="mission-grid">
+        <div class="stat-card">
+            <p>Mission Budget</p>
+            <h3>₹16,300 Cr</h3>
+        </div>
+        <div class="stat-card">
+            <p>Target Minerals</p>
+            <h3>30 Strategic</h3>
+        </div>
+        <div class="stat-card">
+            <p>Timeline</p>
+            <h3>2024 - 2031</h3>
+        </div>
+    </div>
+</div>
+
+<table class="mineral-table">
+    <thead>
+        <tr>
+            <th>S.no.</th>
+            <th>Critical minerals</th>
+            <th>Major applications</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>1</td><td>Antimony</td><td>Flame retardants, lead-acid batteries, lead alloys, plastics (catalysts and stabilizers), glass, and ceramics</td></tr>
+        <tr><td>2</td><td>Beryllium</td><td>Automotive components: transport and defense manufacturing of machinery, electronic, and telecommunications equipment</td></tr>
+        <tr><td>3</td><td>Bismuth</td><td>Chemicals, pharmaceuticals, casting of iron</td></tr>
+        <tr><td>4</td><td>Cadmium</td><td>Batteries, pigments, and coatings</td></tr>
+        <tr><td>5</td><td>Cobalt</td><td>Electric vehicles (EVs), batteries, corrosion-resistant alloys, aerospace applications, pigments, and dyes</td></tr>
+        <tr><td>6</td><td>Copper</td><td>Electrical and electronics products, electrical wiring, solar panels, automotive industry</td></tr>
+        <tr><td>7</td><td>Gallium</td><td>Semiconductors, integrated circuits, and LEDs</td></tr>
+        <tr><td>8</td><td>Germanium</td><td>Optical fibers, satellites, and solar cells</td></tr>
+        <tr><td>9</td><td>Graphite</td><td>Batteries, lubricants, EVs, and fuel cells for EVs</td></tr>
+        <tr><td>10</td><td>Hafnium</td><td>Superalloys, catalyst precursors, semiconductors, oxides for optical, and nuclear reactors</td></tr>
+        <tr><td>11</td><td>Indium</td><td>Electronics (laptops, LED monitors/TVs, smartphones), and semi-conductors</td></tr>
+        <tr><td>12</td><td>Lithium</td><td>Electric vehicles, batteries, glassware, ceramics, fuel manufacturing, lubricant</td></tr>
+        <tr><td>13</td><td>Molybdenum</td><td>Steel alloys, pigments and dyes, catalysts, electrical, and electronic</td></tr>
+        <tr><td>14</td><td>Niobium</td><td>Construction, transportation</td></tr>
+        <tr><td>15</td><td>Nickel</td><td>Stainless steel, solar panels, batteries, aerospace, defense applications, and electric vehicles</td></tr>
+        <tr><td>16</td><td>PGE</td><td>Auto catalysts, jewelry, medicine, and electronic equipment used by the military</td></tr>
+        <tr><td>17</td><td>Phosphorous</td><td>Mineral fertilizer</td></tr>
+        <tr><td>18</td><td>Potash</td><td>Chemical fertilizers and water softeners</td></tr>
+        <tr><td>19</td><td>REE</td><td>Permanent magnets for electricity generators and motors, catalysts, polishing, batteries, electronics, defense technologies, the wind energy sector, aviation, and space</td></tr>
+        <tr><td>20</td><td>Rhenium</td><td>Super-alloys, aerospace and machinery uses, catalysts in the petroleum industry</td></tr>
+        <tr><td>21</td><td>Selenium</td><td>Electrolytic, manganese, glass, and pigments</td></tr>
+        <tr><td>22</td><td>Silicon</td><td>Semiconductors, electronics, transport equipment, paints, and aluminum alloys</td></tr>
+        <tr><td>23</td><td>Strontium</td><td>Alloys of aluminum, pigments and fillers, glass, magnets, and pyrotechnic applications</td></tr>
+        <tr><td>24</td><td>Tantalum</td><td>Capacitors, superalloys, carbides, medical technology</td></tr>
+        <tr><td>25</td><td>Tellurium</td><td>Solar power, thermoelectric devices, rubber vulcanizing</td></tr>
+        <tr><td>26</td><td>Tin</td><td>Aerospace, construction, home decor, electronics, jewelry, and telecommunications</td></tr>
+        <tr><td>27</td><td>Titanium</td><td>Aerospace and defense applications, chemicals and petrochemicals, pigments, and polymers</td></tr>
+        <tr><td>28</td><td>Tungsten</td><td>Mill and cutting tools, mining and construction tools, catalysts and pigments, aeronautics and energy uses, tungsten carbide</td></tr>
+        <tr><td>29</td><td>Vanadium</td><td>Alloys, batteries</td></tr>
+        <tr><td>30</td><td>Zircon</td><td>high-value chemical manufacturing and electronics sectors</td></tr>
+    </tbody>
+</table>
+
+<p class="source-text">Source: Critical Minerals for India, Ministry of Mines</p>
+
+<h2>Mission Targets (2024-2031)</h2>
+
+<table class="targets-table">
+    <thead>
+        <tr>
+            <th>Key Performance Indicator (KPI)</th>
+            <th>Target (2024-25 to 2030-31)</th>
+            <th>Unit</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Domestic Exploration Projects</td><td>1,200</td><td>Projects</td></tr>
+        <tr><td>Foreign Mine Acquisitions (PSUs)</td><td>26</td><td>Mines</td></tr>
+        <tr><td>Foreign Mine Acquisitions (Private)</td><td>24</td><td>Mines</td></tr>
+        <tr><td>Critical Mineral Recycling</td><td>400</td><td>Kilotonnes (kt)</td></tr>
+        <tr><td>Critical Mineral Patents</td><td>1,000</td><td>Patents</td></tr>
+        <tr><td>Skill Development / Workforce</td><td>10,000</td><td>People Trained</td></tr>
+        <tr><td>Mineral Processing Parks</td><td>4</td><td>Parks</td></tr>
+        <tr><td>Strategic Mineral Stockpiles</td><td>5</td><td>Locations</td></tr>
+    </tbody>
+</table>
+
+<section class="chart-section">
+    <h2>Net Import Reliance for Critical Minerals (2020)</h2>
+    <canvas id="mineralsChart"></canvas>
+    <p class="observation">Geographic Scope: Global import sources including China, Russia, South Africa, Brazil, and Australia.</p>
+</section>
+
+<section class="chart-section">
+    <h2>Critical Mineral Exploration Project by GSI</h2>
+    <canvas id="gsiChart"></canvas>
+</section>
+
+<script>
+    const ctx = document.getElementById('mineralsChart').getContext('2d');
+
+    const mineralsChart = new Chart(ctx, {
+
+        type: 'bar',
+
+        data: {
+
+            labels: ['Lithium', 'Cobalt', 'Nickel', 'Vanadium', 'Niobium', 'Germanium', 'Rhenium', 'Beryllium', 'Tantalum', 'Strontium', 'Zirconium (zircon)', 'Graphite (natural)', 'Manganese', 'Chromium', 'Silicon'],
+
+            datasets: [{
+
+                label: 'Net Import Reliance (%)',
+
+                data: [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 80.0, 60.0, 50.0, 2.5, 1.0],
+
+                backgroundColor: [
+
+                    'rgba(255, 99, 132, 0.6)',   // Red
+
+                    'rgba(54, 162, 235, 0.6)',   // Blue
+
+                    'rgba(255, 205, 86, 0.6)',   // Yellow
+
+                    'rgba(75, 192, 192, 0.6)',   // Teal
+
+                    'rgba(153, 102, 255, 0.6)',  // Purple
+
+                    'rgba(255, 159, 64, 0.6)',   // Orange
+
+                    'rgba(199, 199, 199, 0.6)',  // Grey
+
+                    'rgba(83, 102, 255, 0.6)',   // Indigo
+
+                    'rgba(255, 99, 255, 0.6)',   // Magenta
+
+                    'rgba(99, 255, 132, 0.6)',   // Lime
+
+                    'rgba(255, 132, 99, 0.6)',   // Coral
+
+                    'rgba(132, 255, 99, 0.6)',   // Green
+
+                    'rgba(99, 132, 255, 0.6)',   // Light Blue
+
+                    'rgba(255, 255, 99, 0.6)',   // Light Yellow
+
+                    'rgba(255, 99, 99, 0.6)'     // Light Red
+
+                ],
+
+                borderColor: [
+
+                    'rgba(255, 99, 132, 1)',
+
+                    'rgba(54, 162, 235, 1)',
+
+                    'rgba(255, 205, 86, 1)',
+
+                    'rgba(75, 192, 192, 1)',
+
+                    'rgba(153, 102, 255, 1)',
+
+                    'rgba(255, 159, 64, 1)',
+
+                    'rgba(199, 199, 199, 1)',
+
+                    'rgba(83, 102, 255, 1)',
+
+                    'rgba(255, 99, 255, 1)',
+
+                    'rgba(99, 255, 132, 1)',
+
+                    'rgba(255, 132, 99, 1)',
+
+                    'rgba(132, 255, 99, 1)',
+
+                    'rgba(99, 132, 255, 1)',
+
+                    'rgba(255, 255, 99, 1)',
+
+                    'rgba(255, 99, 99, 1)'
+
+                ],
+
+                borderWidth: 1
+
+            }]
+
+        },
+
+        options: {
+
+            scales: {
+
+                y: {
+
+                    beginAtZero: true,
+
+                    max: 100
+
+                }
+
+            }
+
+        }
+
+    });
+
+
+
+    const gsiCtx = document.getElementById('gsiChart').getContext('2d');
+
+    const gsiChart = new Chart(gsiCtx, {
+
+        type: 'bar',
+
+        data: {
+
+            labels: ['2020-21', '2024-25'],
+
+            datasets: [{
+
+                label: 'Mineral Projects',
+
+                data: [65, 195],
+
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+
+                borderColor: 'rgba(54, 162, 235, 1)',
+
+                borderWidth: 1,
+
+                barThickness: 30
+
+            }]
+
+        },
+
+        options: {
+
+            scales: {
+
+                y: {
+
+                    beginAtZero: true
+
+                }
+
+            }
+
+        }
+
+    });
+
+</script>
+
+<footer>
+    Data Source: Ministry of Mines (MoM) / PIB Reports | Last Updated: FY 2024-25 Records
+    <br>
+    <br>
+    <a href="https://www.linkedin.com/in/prasad-kumbhar23/" target="_blank" style="color: #ffffff; text-decoration: none;">Connect with me on LinkedIn</a>
+</footer>
+
+</body>
+</html>
