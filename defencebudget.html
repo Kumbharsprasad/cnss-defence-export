@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defence Budget Dashboard</title>
+    <link rel="stylesheet" href="defence.css">
+    <link rel="stylesheet" href="defencebadget.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>/* CSS reset and flexbox layout fix */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .page-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        footer {
+            background: #000000;
+            color: #e2e8f0;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* small override to ensure chart canvas is crisp */
+        .chart-container { max-width:100%; height:320px; }
+        canvas { width:100% !important; height:100% !important; }
+    </style>
+</head>
+<body>
+
+<div class="page-wrapper">
+<header>
+    <img src="logo/cnss4.webp" alt="CNSS Logo" class="header-logo">
+    <div class="header-text">
+        <h1>Centre for National Security Studies</h1>
+        <p class="program">Def Tech Internship Batch - 02</p>
+        <p class="prepared-by">Prepared by: <strong>Prasad Namdev Kumbhar</strong></p>
+        <p class="prepared-by">Mentor: <strong>Major Arun Sreedharan</strong></p>
+    </div>
+</header>
+
+<div class="attribution-header">
+    <h1 class="institution-name">India Defence Budget Analysis</h1>
+    <div class="attribution-content">
+        <p class="subtitle" style="text-align: center;">A Decade of Strategic Growth (2014 - 2026)</p>
+    </div>
+</div>
+
+<main class="dashboard-grid">
+    <section class="card">
+        <div class="intro-text">
+            <p>This dashboard presents a technology-oriented analysis of India's defence budget for FY 2026–27, examining how financial allocations translate into military capability development. Rather than focusing solely on accounting heads, the analysis re-classifies expenditure into key technology and capability sectors such as aerospace, electronics, artificial intelligence, cyber, space, mechanical platforms, and defence R&D. The objective is to assess India's transition from manpower- and platform-centric spending toward technology-driven, future-ready defence preparedness, while highlighting structural constraints and strategic priorities.</p>
+        </div>
+    </section>
+    
+    <!-- First interactive graph (uses provided CSV data) -->
+    <section class="card">
+        <h3 style="margin-bottom:12px">Defence Budget Financial Year Trend 2014 - 2026</h3>
+        <div class="chart-container">
+            <canvas id="budgetChart"></canvas>
+        </div>
+    </section>
+
+    <section class="card">
+        <h3 style="margin-bottom:16px">India Defence Budget 2026-27</h3>
+        <p class="section-intro">At-a-glance defence budget metrics and distribution. Highest allocation among all ministries with 15.19% increase over FY 2025-26.</p>
+        
+        <div class="summary-grid">
+            <div class="metric-card highlight">
+                <div class="metric-label">Total Defence Allocation (MoD)</div>
+                <div class="metric-number">₹ 7.85 Lakh Crore</div>
+                <div class="metric-sub">15.19% increase • ~2% of GDP</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">Revenue Expenditure</div>
+                <div class="metric-number">₹ 5.54 Lakh Cr</div>
+                <div class="metric-sub">≈70% • Pay, operations & maintenance</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">Capital Expenditure (Modernisation)</div>
+                <div class="metric-number">₹ 2.19 Lakh Cr</div>
+                <div class="metric-sub">≈28% • Equipment & infrastructure</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">Defence Pensions</div>
+                <div class="metric-number">₹ 1.71 Lakh Cr</div>
+                <div class="metric-sub">≈22% • 34+ lakh pensioners</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">Defence R&D (DRDO)</div>
+                <div class="metric-number">₹ 29,100 Cr</div>
+                <div class="metric-sub">₹17,250 Cr capital component</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">Aircraft & Aero Engines</div>
+                <div class="metric-number">₹ 63,733 Cr</div>
+                <div class="metric-sub">Under capital • Air power systems</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">Naval Fleet Allocation</div>
+                <div class="metric-number">₹ 25,023 Cr</div>
+                <div class="metric-sub">Ships, submarines & systems</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">Ex-Servicemen Health (ECHS)</div>
+                <div class="metric-number">₹ 12,100 Cr</div>
+                <div class="metric-sub">45% increase • Veteran healthcare</div>
+            </div>
+        </div>
+
+        <div class="budget-breakdown">
+            <h4 style="margin: 24px 0 16px 0; color: #1e40af;">Budget Distribution (% of total MoD outlay)</h4>
+            <div class="breakdown-grid">
+                <div class="breakdown-item">
+                    <div class="breakdown-bar">
+                        <div class="breakdown-fill" style="width: 27.9%; background: #3b82f6;"></div>
+                    </div>
+                    <div class="breakdown-label">Capital Expenditure</div>
+                    <div class="breakdown-percent">27.9%</div>
+                </div>
+                <div class="breakdown-item">
+                    <div class="breakdown-bar">
+                        <div class="breakdown-fill" style="width: 26.4%; background: #10b981;"></div>
+                    </div>
+                    <div class="breakdown-label">Revenue Pay & Allowances</div>
+                    <div class="breakdown-percent">26.4%</div>
+                </div>
+                <div class="breakdown-item">
+                    <div class="breakdown-bar">
+                        <div class="breakdown-fill" style="width: 21.8%; background: #f59e0b;"></div>
+                    </div>
+                    <div class="breakdown-label">Defence Pensions</div>
+                    <div class="breakdown-percent">21.8%</div>
+                </div>
+                <div class="breakdown-item">
+                    <div class="breakdown-bar">
+                        <div class="breakdown-fill" style="width: 20.2%; background: #8b5cf6;"></div>
+                    </div>
+                    <div class="breakdown-label">Revenue Sustenance</div>
+                    <div class="breakdown-percent">20.2%</div>
+                </div>
+                <div class="breakdown-item">
+                    <div class="breakdown-bar">
+                        <div class="breakdown-fill" style="width: 3.6%; background: #ef4444;"></div>
+                    </div>
+                    <div class="breakdown-label">Civil Defence & Others</div>
+                    <div class="breakdown-percent">3.6%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h3 style="margin-bottom:12px">Historical Allocations & Key Developments</h3>
+        <div class="timeline-container-curved">
+            <div class="timeline-curved">
+                <svg class="timeline-svg" viewBox="0 0 2000 300">
+                    <path d="M50,150 Q250,80 450,120 T850,100 Q1250,80 1650,110 Q1850,120 1950,100" 
+                        stroke="url(#timelineGradient)" stroke-width="4" fill="none" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="timelineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:rgba(255,107,53,0.6);stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:rgba(255,140,66,0.8);stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:rgba(255,107,53,0.6);stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="timeline-items-curved">
+                    <div class="timeline-point" style="--pos-x:5%; --pos-y:50%">
+                        <div class="point-dot"></div>
+                        <div class="point-content above">
+                            <div class="point-year">2014–15</div>
+                            <div class="point-amount">₹ 2.29L Cr</div>
+                            <div class="point-desc">The "Make in India" Debut</div>
+                        </div>
+                    </div>
+                    <div class="timeline-point" style="--pos-x:12%; --pos-y:40%">
+                        <div class="point-dot"></div>
+                        <div class="point-content below">
+                            <div class="point-year">2015–16</div>
+                            <div class="point-amount">₹ 2.47L Cr</div>
+                            <div class="point-desc">The Structural Shift</div>
+                        </div>
+                    </div>
+                    <div class="timeline-point" style="--pos-x:19%; --pos-y:40%">
+                        <div class="point-dot"></div>
+                        <div class="point-content above">
+                            <div class="point-year">2016–17</div>
+                            <div class="point-amount">₹ 2.58L Cr</div>
+                            <div class="point-desc">The Pay Commission Jump</div>
+                        </div>
+                    </div>
+                    <div class="timeline-point" style="--pos-x:26%; --pos-y:42%">
+                        <div class="point-dot"></div>
+                        <div class="point-content below">
+                            <div class="point-year">2017–18</div>
+                            <div class="point-amount">₹ 3.59L Cr</div>
+                            <div class="point-desc">Strategic Partnerships</div>
+                        </div>
+                    </div>
+                    <div class="timeline-point" style="--pos-x:33%; --pos-y:33%">
+                        <div class="point-dot"></div>
+                        <div class="point-content above">
+                            <div class="point-year">2018–19</div>
+                            <div class="point-amount">₹ 4.04L Cr</div>
+                            <div class="point-desc">Border Preparedness</div>
+                        </div>
+                    </div>
+                    <div class="timeline-point" style="--pos-x:40%; --pos-y:33%">
+                        <div class="point-dot"></div>
+                        <div class="point-content below">
+                            <div class="point-year">2019–20</div>
+                            <div class="point-amount">₹ 4.31L Cr</div>
+                            <div class="point-desc">Customs Duty Exemption</div>
+                        </div>
+                    </div>
+                    <div class="timeline-point" style="--pos-x:47%; --pos-y:33%">
+                        <div class="point-dot"></div>
+                        <div class="point-content above">
+                            <div class="point-year">2020–21</div>
+                            <div class="point-amount">₹ 4.71L Cr</div>
+                            <div class="point-desc">The LAC Stand-off Response</div>
+                        </div>
+                    </div>
+                    <div class="timeline-point" style="--pos-x:54%; --pos-y:37%">
+                        <div class="point-dot"></div>
+                        <div class="point-content below">
+                            <div class="point-year">2021–22</div>
+                            <div class="point-amount">₹ 4.78L Cr</div>
+                            <div class="point-desc">The R&D Pivot</div>
+                        </div>
+                    </div>
+                    <div class="timeline-point" style="--pos-x:61%; --pos-y:27%">
+                        <div class="point-dot"></div>
+                        <div class="point-content above">
+                            <div class="point-year">2022–23</div>
+                            <div class="point-amount">₹ 5.25L Cr</div>
+                            <div class="point-desc">Atmanirbhar Pivot (68%)</div>
+                        </div>
+                    </div>
+                    <div class="timeline-point" style="--pos-x:68%; --pos-y:27%">
+                        <div class="point-dot"></div>
+                        <div class="point-content below">
+                            <div class="point-year">2023–24</div>
+                            <div class="point-amount">₹ 5.94L Cr</div>
+                            <div class="point-desc">Operational Readiness Hike</div>
+                        </div>
+                    </div>
+                    <div class="timeline-point" style="--pos-x:75%; --pos-y:27%">
+                        <div class="point-dot"></div>
+                        <div class="point-content above">
+                            <div class="point-year">2024–25</div>
+                            <div class="point-amount">₹ 6.22L Cr</div>
+                            <div class="point-desc">DeepTech & ADITI Scheme</div>
+                        </div>
+                    </div>
+                    <div class="timeline-point" style="--pos-x:82%; --pos-y:37%">
+                        <div class="point-dot"></div>
+                        <div class="point-content below">
+                            <div class="point-year">2025–26</div>
+                            <div class="point-amount">₹ 6.81L Cr</div>
+                            <div class="point-desc">The "Year of Reforms"</div>
+                        </div>
+                    </div>
+                    <div class="timeline-point" style="--pos-x:90%; --pos-y:33%">
+                        <div class="point-dot"></div>
+                        <div class="point-content above">
+                            <div class="point-year">2026–27</div>
+                            <div class="point-amount">₹ 7.85L Cr</div>
+                            <div class="point-desc">Operation Sindoor & Drone Era</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            // Add horizontal mouse wheel scrolling
+            const timelineContainer = document.querySelector('.timeline-container-curved');
+            timelineContainer.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                timelineContainer.scrollLeft += e.deltaY;
+            });
+        </script>
+    </section>
+
+    <section class="card">
+        <h3 style="margin-bottom:12px">Budget Comparison: 2014-15 vs 2026-27</h3>
+        <p class="section-intro">Interactive comparison showing growth across all defence categories (All figures in ₹ crore approx.)</p>
+        
+        <div class="comparison-container">
+            <div class="comparison-controls">
+                <button class="toggle-btn active" data-view="table">Table View</button>
+                <button class="toggle-btn" data-view="growth">Growth View</button>
+                <button class="toggle-btn" data-view="chart">Chart View</button>
+            </div>
+
+            <div id="tableView" class="comparison-view active">
+                <div class="comparison-table">
+                    <div class="table-row header">
+                        <div class="table-cell category">Category</div>
+                        <div class="table-cell fy2014">FY 2014-15</div>
+                        <div class="table-cell fy2026">FY 2026-27</div>
+                        <div class="table-cell growth">Growth %</div>
+                    </div>
+                    <div class="table-row highlight" data-category="total">
+                        <div class="table-cell category">Total defence budget</div>
+                        <div class="table-cell fy2014">₹2,24,000 cr</div>
+                        <div class="table-cell fy2026">₹7,84,678 cr</div>
+                        <div class="table-cell growth positive">+250%</div>
+                    </div>
+                    <div class="table-row" data-category="revenue">
+                        <div class="table-cell category">Revenue expenditure</div>
+                        <div class="table-cell fy2014">₹1,34,412 cr</div>
+                        <div class="table-cell fy2026">₹5,53,668 cr</div>
+                        <div class="table-cell growth positive">+312%</div>
+                    </div>
+                    <div class="table-row" data-category="pension">
+                        <div class="table-cell category">Defence pensions</div>
+                        <div class="table-cell fy2014">₹50,999 cr</div>
+                        <div class="table-cell fy2026">₹1,71,338 cr</div>
+                        <div class="table-cell growth positive">+236%</div>
+                    </div>
+                    <div class="table-row" data-category="capital">
+                        <div class="table-cell category">Capital outlay</div>
+                        <div class="table-cell fy2014">₹94,587 cr</div>
+                        <div class="table-cell fy2026">₹2,19,306 cr</div>
+                        <div class="table-cell growth positive">+132%</div>
+                    </div>
+                    <div class="table-row sub-row" data-category="aircraft">
+                        <div class="table-cell category">— Aircraft & aero engines</div>
+                        <div class="table-cell fy2014">Not reported</div>
+                        <div class="table-cell fy2026">₹63,733 cr</div>
+                        <div class="table-cell growth new">New</div>
+                    </div>
+                    <div class="table-row sub-row" data-category="naval">
+                        <div class="table-cell category">— Naval fleet modernisation</div>
+                        <div class="table-cell fy2014">Not reported</div>
+                        <div class="table-cell fy2026">₹25,023 cr</div>
+                        <div class="table-cell growth new">New</div>
+                    </div>
+                    <div class="table-row" data-category="rd">
+                        <div class="table-cell category">Defence R&D (DRDO)</div>
+                        <div class="table-cell fy2014">₹5,975 cr</div>
+                        <div class="table-cell fy2026">₹29,100 cr</div>
+                        <div class="table-cell growth positive">+387%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="growthView" class="comparison-view">
+                <div class="growth-cards">
+                    <div class="growth-card" data-category="total">
+                        <div class="growth-title">Total Budget</div>
+                        <div class="growth-percent">+250%</div>
+                        <div class="growth-details">From ₹2.24L to ₹7.85L Crore</div>
+                    </div>
+                    <div class="growth-card" data-category="rd">
+                        <div class="growth-title">R&D Investment</div>
+                        <div class="growth-percent">+387%</div>
+                        <div class="growth-details">From ₹5,975 to ₹29,100 Crore</div>
+                    </div>
+                    <div class="growth-card" data-category="revenue">
+                        <div class="growth-title">Operations</div>
+                        <div class="growth-percent">+312%</div>
+                        <div class="growth-details">From ₹1.34L to ₹5.54L Crore</div>
+                    </div>
+                    <div class="growth-card" data-category="capital">
+                        <div class="growth-title">Modernisation</div>
+                        <div class="growth-percent">+132%</div>
+                        <div class="growth-details">From ₹94,587 to ₹2.19L Crore</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="chartView" class="comparison-view">
+                <div class="chart-container">
+                    <canvas id="comparisonChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Comparison view switching
+            const toggleBtns = document.querySelectorAll('.toggle-btn');
+            const views = document.querySelectorAll('.comparison-view');
+            
+            toggleBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    toggleBtns.forEach(b => b.classList.remove('active'));
+                    views.forEach(v => v.classList.remove('active'));
+                    
+                    btn.classList.add('active');
+                    document.getElementById(btn.dataset.view + 'View').classList.add('active');
+                    
+                    if (btn.dataset.view === 'chart') {
+                        createComparisonChart();
+                    }
+                });
+            });
+
+            // Table row highlighting
+            const tableRows = document.querySelectorAll('.table-row[data-category]');
+            tableRows.forEach(row => {
+                row.addEventListener('mouseenter', () => {
+                    row.classList.add('hover');
+                });
+                row.addEventListener('mouseleave', () => {
+                    row.classList.remove('hover');
+                });
+            });
+
+            // Create comparison chart
+            function createComparisonChart() {
+                const ctx = document.getElementById('comparisonChart');
+                if (!ctx || ctx.chart) return;
+                
+                ctx.chart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Total Budget', 'Revenue Exp.', 'Pensions', 'Capital Outlay', 'R&D'],
+                        datasets: [{
+                            label: '2014-15 (₹ Crore)',
+                            data: [224000, 134412, 50999, 94587, 5975],
+                            backgroundColor: 'rgba(30, 64, 175, 0.7)',
+                            borderColor: '#1e40af',
+                            borderWidth: 1
+                        }, {
+                            label: '2026-27 (₹ Crore)',
+                            data: [784678, 553668, 171338, 219306, 29100],
+                            backgroundColor: 'rgba(255, 140, 66, 0.7)',
+                            borderColor: '#ff8c42',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'top' },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.dataset.label + ': ₹' + context.formattedValue + ' Crore';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: { display: true, text: 'Amount (₹ Crore)' }
+                            }
+                        }
+                    }
+                });
+            }
+        </script>
+    </section>
+
+    <section class="card">
+        <h3 style="margin-bottom:16px">Defence Technology Sector Allocation</h3>
+        <p class="section-intro">Strategic breakdown of Capital + R&D allocation across key defence technology sectors for capability development.</p>
+        
+        <div class="sector-grid">
+            <div class="sector-card primary">
+                <div class="sector-header">
+                    <div class="sector-info">
+                        <h4>Aerospace & Aviation Tech</h4>
+                        <div class="sector-amount">₹63,733 crore</div>
+                    </div>
+                    <div class="sector-share">26%</div>
+                </div>
+                <div class="sector-progress">
+                    <div class="progress-bar" style="width: 26%; background: #3b82f6;"></div>
+                </div>
+                <div class="sector-desc">Fighters, helicopters, UAVs, aero-engines, avionics</div>
+            </div>
+
+            <div class="sector-card">
+                <div class="sector-header">
+                    <div class="sector-info">
+                        <h4>Electronics, Sensors & EW</h4>
+                        <div class="sector-amount">₹40,000-45,000 crore</div>
+                    </div>
+                    <div class="sector-share">18%</div>
+                </div>
+                <div class="sector-progress">
+                    <div class="progress-bar" style="width: 18%; background: #10b981;"></div>
+                </div>
+                <div class="sector-desc">Radars, AESA, EW systems, C4ISR, secure comms</div>
+            </div>
+
+            <div class="sector-card">
+                <div class="sector-header">
+                    <div class="sector-info">
+                        <h4>Mechanical & Heavy Platforms</h4>
+                        <div class="sector-amount">₹45,000-50,000 crore</div>
+                    </div>
+                    <div class="sector-share">20%</div>
+                </div>
+                <div class="sector-progress">
+                    <div class="progress-bar" style="width: 20%; background: #f59e0b;"></div>
+                </div>
+                <div class="sector-desc">Tanks, artillery, armoured vehicles, guns</div>
+            </div>
+
+            <div class="sector-card">
+                <div class="sector-header">
+                    <div class="sector-info">
+                        <h4>Missile & Space Systems</h4>
+                        <div class="sector-amount">₹30,000-35,000 crore</div>
+                    </div>
+                    <div class="sector-share">13%</div>
+                </div>
+                <div class="sector-progress">
+                    <div class="progress-bar" style="width: 13%; background: #8b5cf6;"></div>
+                </div>
+                <div class="sector-desc">Ballistic/cruise missiles, air defence, military satellites</div>
+            </div>
+
+            <div class="sector-card">
+                <div class="sector-header">
+                    <div class="sector-info">
+                        <h4>Defence R&D (DRDO Core)</h4>
+                        <div class="sector-amount">₹29,100 crore</div>
+                    </div>
+                    <div class="sector-share">12%</div>
+                </div>
+                <div class="sector-progress">
+                    <div class="progress-bar" style="width: 12%; background: #ef4444;"></div>
+                </div>
+                <div class="sector-desc">Missiles, materials, propulsion, stealth, hypersonics</div>
+            </div>
+
+            <div class="sector-card">
+                <div class="sector-header">
+                    <div class="sector-info">
+                        <h4>Ammunition & Explosives</h4>
+                        <div class="sector-amount">₹20,000-25,000 crore</div>
+                    </div>
+                    <div class="sector-share">9%</div>
+                </div>
+                <div class="sector-progress">
+                    <div class="progress-bar" style="width: 9%; background: #06b6d4;"></div>
+                </div>
+                <div class="sector-desc">Smart munitions, war reserves, propellants</div>
+            </div>
+
+            <div class="sector-card">
+                <div class="sector-header">
+                    <div class="sector-info">
+                        <h4>AI & Autonomous Systems</h4>
+                        <div class="sector-amount">₹18,000-22,000 crore</div>
+                    </div>
+                    <div class="sector-share">8%</div>
+                </div>
+                <div class="sector-progress">
+                    <div class="progress-bar" style="width: 8%; background: #84cc16;"></div>
+                </div>
+                <div class="sector-desc">AI ISR, drones, swarm systems, decision support</div>
+            </div>
+
+            <div class="sector-card">
+                <div class="sector-header">
+                    <div class="sector-info">
+                        <h4>Cyber & Information Warfare</h4>
+                        <div class="sector-amount">₹8,000-12,000 crore</div>
+                    </div>
+                    <div class="sector-share">4%</div>
+                </div>
+                <div class="sector-progress">
+                    <div class="progress-bar" style="width: 4%; background: #ec4899;"></div>
+                </div>
+                <div class="sector-desc">Cyber defence, offensive cyber, encryption</div>
+            </div>
+
+            <div class="sector-card">
+                <div class="sector-header">
+                    <div class="sector-info">
+                        <h4>Dual-Use & Emerging Tech</h4>
+                        <div class="sector-amount">₹10,000-15,000 crore</div>
+                    </div>
+                    <div class="sector-share">5%</div>
+                </div>
+                <div class="sector-progress">
+                    <div class="progress-bar" style="width: 5%; background: #64748b;"></div>
+                </div>
+                <div class="sector-desc">Quantum, semiconductors, robotics, energy weapons</div>
+            </div>
+        </div>
+
+        <div class="sector-summary">
+            <h4 style="margin: 20px 0 12px 0; color: #1e40af;">Technology Investment Priorities</h4>
+            <div class="priority-tags">
+                <span class="priority-tag high">High Priority: Aerospace (26%)</span>
+                <span class="priority-tag medium">Medium Priority: Heavy Platforms (20%)</span>
+                <span class="priority-tag medium">Medium Priority: Electronics & Sensors (18%)</span>
+                <span class="priority-tag emerging">Emerging: AI & Cyber (12%)</span>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- <footer>
+    Data Source: Ministry of Defence (MoD) / PIB Reports | Last Updated: FY 2025-26 Records
+    <br>
+    <br>
+    <a href="https://www.linkedin.com/in/prasad-kumbhar23/" target="_blank" style="color: #ffffff; text-decoration: none;">Connect with me on LinkedIn</a>
+</footer> -->
+
+<script>
+// CSV data provided by user
+const csvData = `Financial Year,Total Budget (₹ Lakh Crore),Capital Outlay (Modernization),Pension Allocation
+2014–15,2.29,0.94,0.51
+2015–16,2.47,0.95,0.54
+2016–17,2.58,0.86,0.82
+2017–18,3.59,0.86,0.85
+2018–19,4.04,0.94,1.08
+2019–20,4.31,1.03,1.12
+2020–21,4.71,1.13,1.33
+2021–22,4.78,1.35,1.15
+2022–23,5.25,1.52,1.19
+2023–24,5.94,1.62,1.38
+2024–25,6.22,1.72,1.41
+2025–26,6.81,1.80,1.61
+2026–27,7.85,2.19,1.71`;
+
+function parseCSV(csv) {
+    const rows = csv.trim().split(/\r?\n/);
+    rows.shift(); // header
+    const labels = [];
+    const total = [];
+    const capex = [];
+    const pension = [];
+    rows.forEach(r => {
+        const cols = r.split(',');
+        labels.push(cols[0]);
+        total.push(parseFloat(cols[1]));
+        capex.push(parseFloat(cols[2]));
+        pension.push(parseFloat(cols[3]));
+    });
+    return { labels, total, capex, pension };
+}
+
+const data = parseCSV(csvData);
+
+const ctx = document.getElementById('budgetChart').getContext('2d');
+const budgetChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: data.labels,
+        datasets: [
+            { label: 'Total Budget', data: data.total, borderColor: '#1e40af', backgroundColor: 'rgba(30,64,175,0.08)', tension: 0.3, pointRadius:4 },
+            { label: 'Capital Outlay (Modernization)', data: data.capex, borderColor: '#ff8c42', backgroundColor: 'rgba(255,140,66,0.08)', tension: 0.3, pointRadius:4 },
+            { label: 'Pension Allocation', data: data.pension, borderColor: '#10b981', backgroundColor: 'rgba(16,185,129,0.08)', tension: 0.3, pointRadius:4 }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+            legend: { position: 'top' },
+            tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ₹ ${ctx.formattedValue} Lakh Crore` } }
+        },
+        scales: {
+            y: { beginAtZero: false, title: { display: true, text: '₹ Lakh Crore' } },
+            x: { title: { display: true, text: 'Financial Year' } }
+        }
+    }
+});
+</script>
+
+</div>
+
+<footer>
+    Data Source: Ministry of Defence (MoD) / PIB Reports | Last Updated: FY 2025-26 Records
+    <br>
+    <br>
+    <a href="https://www.linkedin.com/in/prasad-kumbhar23/" target="_blank" style="color: #ffffff; text-decoration: none;">Connect with me on LinkedIn</a>
+</footer>
+
+</body>
+</html>
